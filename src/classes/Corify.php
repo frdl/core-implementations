@@ -1,6 +1,6 @@
 <?php
 
-namepspace Frdlweb;
+namespace Frdlweb;
 
 
 class Corify
