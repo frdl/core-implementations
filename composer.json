@@ -1,0 +1,28 @@
+{
+"name": "frdl/core-implementations",
+"description": "Frdlweb Facades.",
+"type" : "library",
+"keywords": ["facades", "frdl", "frdlweb"],
+"homepage": "https://github.com/frdl/core-implementations",
+"license": ["MIT"],
+"authors":
+	[
+		{
+		"name": "Till Wehowski",
+		"homepage": "https://webfan.de"
+		}
+	],
+"require" : { 
+    "php": ">=7.2",
+    "frdl/frdlweb-composer-installers" : "*",
+    "frdl/frdlweb-software-support" : "*"
+    
+},
+"autoload": {
+          "classmap" : ["src/classes/"],
+          "psr-4" : {
+	             "frdl\\core\\": "src/lib/"	  
+	        }
+	
+}
+}
