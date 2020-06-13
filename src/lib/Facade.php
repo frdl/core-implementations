@@ -4,6 +4,7 @@ namespace frdl\core;
 abstract class Facade
 {
     private static $instances = array();
+    private static $corified = false;
 
   
 
@@ -20,9 +21,14 @@ abstract class Facade
     }
     
     
-    public static function __callStatic($method, $arguments)
+    final public static function __callStatic($method, $arguments)
     {
-      
+        if(false === self::$corified){
+            self::$corified=true;
+            new \Frdlweb\Corify;
+        }
+        
+        
         if (!isset(self::$instances[$connector])) {
             self::$instances[$connector] = static::getFacadeInstance();
         }
