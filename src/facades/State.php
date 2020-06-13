@@ -1,6 +1,6 @@
 <?php
 
-namespace Project;
+namespace Webfan\Project;
 
 use frdl\core\Facade;
 
