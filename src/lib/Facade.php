@@ -1,5 +1,5 @@
 <?php
-namespace Frdlweb;
+namespace frdl\core;
 
 abstract class Facade
 {
