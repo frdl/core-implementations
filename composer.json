@@ -22,7 +22,7 @@
      "ahir/facades": "1.*"	
 },
 "autoload": {
-          "classmap" : ["src/classes/"],
+          "classmap" : ["src/classes/", "src/facades/"],
           "psr-4" : {
 	             "frdl\\core\\": "src/lib/"	  
 	        }
