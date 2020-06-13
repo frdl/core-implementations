@@ -18,6 +18,9 @@
     "frdl/frdlweb-software-support" : "*"
     
 },
+"require-dev" : {
+     "ahir/facades": "1.*"	
+},
 "autoload": {
           "classmap" : ["src/classes/"],
           "psr-4" : {
