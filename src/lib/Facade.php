@@ -7,11 +7,35 @@ abstract class Facade
     private static $corified = false;
 
   
+	 protected static $shouldBeSingleton = false;
+    
+    
+	abstract protected static function getFacadeAccessor() :string;    
+    
 
-    abstract protected static function getFacadeAccessor() :string;
+    public static function singleton(bool $is = null) :bool{
+		 if(\is_bool($is)){
+		    self::$shouldBeSingleton=$is;	 
+		 }
+		 
+		 
+	     return  self::$shouldBeSingleton;	 
+    }
     
     
-    public static function getFacadeInstance()
+    public static function create()
+    {
+        if(self::singleton() && isset(self::$instances[static::getFacadeAccessor()])){
+            return self::$instances[static::getFacadeAccessor()];
+        }
+        
+       self::$instances[static::getFacadeAccessor()] 
+            = call_user_func_array(static::class.'::getFacadeInstance', func_get_args());
+        
+        return self::$instances[static::getFacadeAccessor()];
+    }       
+    
+    public static function getFacadeInstance() 
     {
         $class = static::getFacadeAccessor();
     
