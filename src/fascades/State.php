@@ -20,7 +20,7 @@ class State extends Facade
     {
         $class = static::getFacadeAccessor();
     
-         $i = new $class((new \project\compiled())->dir);
+         $i = new $class((new \compiled\project())->dir);
          
          return $i;
     }
