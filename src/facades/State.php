@@ -20,7 +20,18 @@ class State extends Facade
     {
         $class = static::getFacadeAccessor();
     
-         $i = new $class((new \compiled\project())->dir);
+        $dir = (class_exists(\compiled\project::class))
+              ? (new \compiled\project())->dir
+          
+            : __DIR__.\DIRECTORY_SEPARATOR
+              .'..'.\DIRECTORY_SEPARATOR
+              .'..'.\DIRECTORY_SEPARATOR
+              .'..'.\DIRECTORY_SEPARATOR
+              .'..'.\DIRECTORY_SEPARATOR
+              .'..'.\DIRECTORY_SEPARATOR
+              ;
+      
+         $i = new $class($dir);
          
          return $i;
     }
