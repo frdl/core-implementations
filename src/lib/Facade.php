@@ -20,6 +20,22 @@ abstract class Facade
          return $i;
     }
     
+    final public function __set($name, $value)
+    {
+        self::$instances[ static::getFacadeAccessor() ]->{$name} = $value;
+    }   
+        
+    final public function &__get($name)
+    {
+        return self::$instances[ static::getFacadeAccessor() ]->{$name};
+    }   
+    
+    
+    final public function __call($method, $arguments)
+    {
+        return call_user_func_array([self::$instances[ static::getFacadeAccessor() ], $method], $arguments);
+    }   
+    
     
     final public static function __callStatic($method, $arguments)
     {
@@ -29,10 +45,10 @@ abstract class Facade
         }
         
         
-        if (!isset(self::$instances[$connector])) {
-            self::$instances[$connector] = static::getFacadeInstance();
+        if (!isset(self::$instances[static::getFacadeAccessor()])) {
+            self::$instances[static::getFacadeAccessor()] = static::getFacadeInstance();
         }
-        return call_user_func_array(array(self::$instances[$connector], $method), $arguments);
+        return call_user_func_array([self::$instances[static::getFacadeAccessor()], $method], $arguments);
     }   
    
 }
