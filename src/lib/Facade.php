@@ -5,21 +5,18 @@ abstract class Facade
 {
     private static $instances = array();
     private static $corified = false;
-
-  
-	 protected static $shouldBeSingleton = false;
+    protected static $shouldBeSingleton = true;
     
-    
-	abstract protected static function getFacadeAccessor() :string;    
+	
+    abstract protected static function getFacadeAccessor() :string;    
     
 
     public static function singleton(bool $is = null) :bool{
 		 if(\is_bool($is)){
 		    self::$shouldBeSingleton=$is;	 
-		 }
-		 
-		 
-	     return  self::$shouldBeSingleton;	 
+		 }	 
+	  
+       return  self::$shouldBeSingleton;	 
     }
     
     
