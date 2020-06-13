@@ -27,5 +27,12 @@
 	             "frdl\\core\\": "src/lib/"	  
 	        }
 	
-}
+},
+
+"repositories": [
+        {
+            "type": "composer",
+            "url": "https:\/\/packages.frdl.de"
+        }
+    ]
 }
