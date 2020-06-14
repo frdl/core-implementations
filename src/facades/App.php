@@ -12,6 +12,7 @@ class App extends Facade
 
     protected static function getFacadeAccessor() :string
     {
+         self::_init();  
          return \frdl\runtime\App::class;
     }
     
