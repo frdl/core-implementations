@@ -7,8 +7,8 @@ class Corify
 {
 
    const ALIAS_MAP = [
-      \Project\State::class => \Webfan\Project\State::class,
-      
+       \Webfan\Project\State::class =>  \frdl\Project\State::class,
+       \frdlweb\Level2App::class =>  \frdl\runtime\App::class,
    ];
    
    
