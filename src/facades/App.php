@@ -16,7 +16,7 @@ class App extends Facade
     }
     
     
-    public static function getFacadeInstance(string $env=null,string $dir=null)
+    protected static function getFacadeInstance(string $env=null,string $dir=null)
     {
         $class = static::getFacadeAccessor();
     
