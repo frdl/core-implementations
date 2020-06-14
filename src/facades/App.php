@@ -12,7 +12,7 @@ class App extends Facade
 
     protected static function getFacadeAccessor() :string
     {
-         return \frdlweb\Level2App::class;
+         return \frdl\runtime\App::class;
     }
     
     
