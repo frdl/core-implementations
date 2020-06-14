@@ -10,7 +10,12 @@ abstract class Facade
 	
     abstract protected static function getFacadeAccessor() :string;    
     
-
+    protected static function _init(){	    
+	    if(false === self::$corified){           
+		    self::$corified=true;           
+		    new \Frdlweb\Corify;      
+	    }    
+    }
     protected static function singleton(bool $is = null) :bool{
 		 if(\is_bool($is)){
 		    self::$shouldBeSingleton=$is;	 
@@ -22,6 +27,9 @@ abstract class Facade
     
     public static function create()
     {
+	  self::_init();  
+	    
+	    
         if(self::singleton() && isset(self::$instances[static::getFacadeAccessor()])){
             return self::$instances[static::getFacadeAccessor()];
         }
@@ -34,6 +42,9 @@ abstract class Facade
     
     protected static function getFacadeInstance() 
     {
+	  
+        self::_init();  
+	    
         $class = static::getFacadeAccessor();
     
          $i = new $class();
@@ -60,10 +71,7 @@ abstract class Facade
     
     final public static function __callStatic($method, $arguments)
     {
-        if(false === self::$corified){
-            self::$corified=true;
-            new \Frdlweb\Corify;
-        }
+       self::_init();  
         
         
         if (!isset(self::$instances[static::getFacadeAccessor()])) {
