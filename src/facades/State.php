@@ -16,7 +16,7 @@ class State extends Facade
     }
     
     
-    public static function getFacadeInstance()
+    protected static function getFacadeInstance()
     {
         $class = static::getFacadeAccessor();
     
