@@ -8,7 +8,7 @@ use frdl\core\Facade;
 class App extends Facade
 {
 
-  
+    protected static $shouldBeSingleton = true;
 
     protected static function getFacadeAccessor() :string
     {
@@ -43,8 +43,8 @@ class App extends Facade
                 : 'production';
        }
       
-         $i = new $class($env, $dir);
-         
+        // $i = new $class($env, $dir);
+           $i = $class::getInstance($env, $dir);
          return $i;
     }
     
