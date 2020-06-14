@@ -1,5 +1,11 @@
 <?php
+namespace Webfan\Project;
 
+class State extends \Webfan\Support\Project\State
+{
+  
+}
+/*
 namespace Webfan\Project;
 
 use frdl\core\Facade;
@@ -43,7 +49,7 @@ class State extends Facade
       }
       
 
-      
+           
          $i = new $class($dir);
          
          return $i;
@@ -53,3 +59,4 @@ class State extends Facade
 
    
 }
+*/
