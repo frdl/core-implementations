@@ -18,6 +18,9 @@ class App extends Facade
     
     protected static function getFacadeInstance(string $env=null,string $dir=null)
     {
+        
+        self::_init();  
+        
         $class = static::getFacadeAccessor();
     
       if(!is_string($dir) ){
