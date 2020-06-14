@@ -16,10 +16,15 @@ class State extends Facade
     }
     
     
-    protected static function getFacadeInstance()
+    protected static function getFacadeInstance(string $dir = null)
     {
+      
+      self::_init();  
+      
         $class = static::getFacadeAccessor();
     
+      if(!is_string($dir) ){
+      
         $dir = (class_exists(\compiled\project::class))
               ? (new \compiled\project())->dir
           
@@ -30,6 +35,14 @@ class State extends Facade
               .'..'.\DIRECTORY_SEPARATOR
               .'..'.\DIRECTORY_SEPARATOR
               ;
+        
+      }
+      
+      if(!is_dir($dir) ){
+        throw new \Exception('Application directory "'.$dir.'" does not exist');
+      }
+      
+
       
          $i = new $class($dir);
          
