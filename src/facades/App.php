@@ -16,10 +16,11 @@ class App extends Facade
     }
     
     
-    public static function getFacadeInstance()
+    public static function getFacadeInstance(string $env=null,string $dir=null)
     {
         $class = static::getFacadeAccessor();
     
+      if(!is_string($dir) ){
         $dir = (class_exists(\compiled\project::class))
               ? (new \compiled\project())->dir
           
@@ -30,10 +31,17 @@ class App extends Facade
               .'..'.\DIRECTORY_SEPARATOR
               .'..'.\DIRECTORY_SEPARATOR
               ;
+      }
       
+      if(!is_dir($dir) ){
+        throw new \Exception('Application directory "'.$dir.'" does not exist');
+      }
+      
+       if(!is_string($env) ){
           $env = (getenv('APP_ENV'))
                 ? getenv('APP_ENV')
                 : 'production';
+       }
       
          $i = new $class($env, $dir);
          
