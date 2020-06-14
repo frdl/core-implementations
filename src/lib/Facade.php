@@ -11,7 +11,7 @@ abstract class Facade
     abstract protected static function getFacadeAccessor() :string;    
     
 
-    public static function singleton(bool $is = null) :bool{
+    protected static function singleton(bool $is = null) :bool{
 		 if(\is_bool($is)){
 		    self::$shouldBeSingleton=$is;	 
 		 }	 
@@ -32,7 +32,7 @@ abstract class Facade
         return self::$instances[static::getFacadeAccessor()];
     }       
     
-    public static function getFacadeInstance() 
+    protected static function getFacadeInstance() 
     {
         $class = static::getFacadeAccessor();
     
